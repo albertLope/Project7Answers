@@ -20,13 +20,16 @@ public class AddRelative {
         instance variable fullName equal to parameter fullName
 
         If the age is more then or equal to 18 then instance variable age equal to parameter age (use relativeAgeChecker method)
+        If the age is less then 18 then instance variable age equal to "0"
 
      */
     public AddRelative(String fullName , String age){
         this.fullName = fullName;
         boolean res= relativeAgeChecker(age);
-        if(res){
+        if(res==true){
             this.age = age;
+        }else{
+            this.age = "0";
         }
     }
 
@@ -40,6 +43,7 @@ public class AddRelative {
 
         Note: use a Users class checkAge method.
      */
+
     public boolean relativeAgeChecker(String relativeAge){
         String result = Users.checkAge(relativeAge);
         if(result.equals("You can get a credit card")){

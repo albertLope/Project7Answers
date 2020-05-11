@@ -70,27 +70,51 @@ public class Users {
         Do you want to add add your relative?
 
         if the user say Yes
+        Ask to user
+        What is your relative name?
+        Ask to user
+        Date of birth relative?
+
         Then Add the relative(Use AddRelative class )
         relativeName variable equal to AddRelative class fullName
         relativeAge variable equal to AddRelative class age
 
+            if relativeAge equal to "0"
+                then change the relativeName to "Relative should be more then 18 years old";
+                then change the relativeAge to "Relative should be more then 18 years old";
+                return the "Relative should be more then 18 years old";
+            if the relativeAge is not equal to "0"
+               return Transaction done successfully
+
         If the user say No
         then no need to add anything.
      */
+
     public String CheckMariageStatus(String marriageStatus){
 
         String res = "";
 
         if(marriageStatus.equals("married")){
-
             Scanner dp = new Scanner(System.in);
             System.out.println("Do you want to add add your relative?");
             String answer = dp.nextLine();
             if(answer.equals("Yes")){
-                AddRelative a1 = new AddRelative("Selma koklu" , "01/01/1990");
-                relativeName = a1.fullName;
+                System.out.println("What is your relative name?");
+                String rname = dp.nextLine();
+                System.out.println("Date of birth relative?");
+                String age = dp.nextLine();
+                AddRelative a1 = new AddRelative(rname , age);
+                relativeName =a1.fullName;
                 relativeAge = a1.age;
-                res=  "Relative added successfully";
+
+                res= "Transaction done successfully";
+
+                if(relativeAge.equals("0")){
+                    relativeName = "Relative should be more then 18 years old";
+                    relativeAge = "Relative should be more then 18 years old";
+                    res= "Relative should be more then 18 years old";
+                }
+
             }else{
                 res =  "Not able to add relative";
             }
@@ -169,6 +193,8 @@ public class Users {
 
     }
 
+
+
     /*
         Create a Random number which is returning 8 digit number
 
@@ -192,7 +218,7 @@ public class Users {
         Return type is void
 
         In this method
-            First ask to user "Do you want to transfer between your accounts or different user"
+            First ask to user "Do you want to transfer between your accounts or different user" (use scanner class)
 
         if the answer is own
             Call the method transferToOwnAccount in the Account class
